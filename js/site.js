@@ -12,6 +12,10 @@ window.HEMI_SITE = {
     'use strict';
     const cfg = window.HEMI_SITE;
     document.addEventListener('DOMContentLoaded', () => {
+        // 부제목: 한국어 브라우저는 "과반이 없으면 타협도 없다.", 그 밖의 언어는 "No majority, No compromise."
+        const sub = document.getElementById('siteSubtitle');
+        const ko = /^ko\b/i.test(navigator.language || '');
+        if (sub && !ko && sub.dataset.en) { sub.textContent = sub.dataset.en; sub.lang = 'en'; }
         // Steam 찜하기
         const steam = document.getElementById('steamBtn');
         if (steam) {

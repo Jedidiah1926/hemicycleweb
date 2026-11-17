@@ -52,10 +52,8 @@ html[data-theme-family="modern"] .neon-only { display: none; }
 .site-title { margin: 0; font-size: clamp(56px, 10vw, 120px); line-height: 1; color: var(--tno-neon); text-shadow: 0 0 18px var(--tno-neon-dim); letter-spacing: 2px; font-weight: normal; }
 .site-subtitle { margin: 14px 0 0; font-size: clamp(16px, 2vw, 22px); }
 .site-lead { margin: 10px 0 0; color: var(--site-dim); font-size: 0.95rem; line-height: 1.6; max-width: 34em; }
-.site-stage { margin-top: 12px; color: var(--tno-neon); font-size: 0.8rem; letter-spacing: 2px; }
 html[data-theme-family="modern"] .site-title { color: var(--m-text); font-weight: 600; letter-spacing: -2px; }
 html[data-theme-family="modern"] .site-subtitle { color: var(--m-text-2); }
-html[data-theme-family="modern"] .site-stage { color: var(--m-text); font-weight: 600; font-size: 13px; letter-spacing: 1px; }
 
 /* 카드 */
 .site-card { background: var(--tno-panel); border: 1px solid var(--tno-border); border-radius: var(--site-radius); padding: 16px; }
