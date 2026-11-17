@@ -6,7 +6,6 @@ window.HEMI_SITE = {
     youtubeChannel: 'https://www.youtube.com/@Hemicycles',
     trailerKo: 'aKRCh-_S4WU', // 한국어 트레일러 (YouTube 영상 ID)
     trailerEn: 'HPzNE1gdbyE', // 영어 트레일러
-    releases: 'https://github.com/Jedidiah1926/parliament/releases', // 데스크톱 앱 내려받기
 };
 
 (function () {
