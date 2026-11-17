@@ -1,0 +1,123 @@
+/* ===== Hemicycle 웹 메인 — 네온(기본 토큰)과 라이트/다크(css/modern.css) ===== */
+:root {
+    --tno-bg: #05070a;
+    --tno-panel: #101218;
+    --tno-neon: #00ffff;
+    --tno-neon-dim: color-mix(in srgb, var(--tno-neon) 20%, transparent);
+    --tno-text: #e0e0e0;
+    --tno-border: #4a5a6a;
+    --tno-gold: #ffd700;
+    --site-dim: #8a8f98;
+    --site-radius: 0;
+}
+html[data-theme-family="modern"] { --site-dim: var(--m-text-3); --site-radius: 20px; }
+
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--tno-bg);
+    color: var(--tno-text);
+    font-family: 'NeoDunggeunmo', 'VT323', monospace;
+}
+/* 네온: CRT 스캔라인 (라이트/다크는 modern.css가 끈다) */
+body::after {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 999;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 2px, 3px 100%;
+}
+a { color: inherit; }
+html[data-theme-family="modern"] .neon-only { display: none; }
+
+.site {
+    position: relative;
+    min-height: 100vh;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: clamp(28px, 7vh, 72px) clamp(16px, 5vw, 56px) 32px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 420px);
+    grid-template-areas: "brand steam" "trailer links" "footer footer";
+    gap: 24px 40px;
+    align-content: start;
+}
+.site-brand { grid-area: brand; align-self: center; }
+.site-steam { grid-area: steam; align-self: start; }
+.site-trailer-card { grid-area: trailer; }
+.site-links { grid-area: links; align-self: start; }
+.site-footer { grid-area: footer; }
+
+/* 제목 */
+.site-status { border-left: 3px solid var(--tno-neon); padding-left: 10px; color: var(--site-dim); font-size: 0.8rem; line-height: 1.5; margin-bottom: 18px; letter-spacing: 1px; }
+.site-title { margin: 0; font-size: clamp(56px, 10vw, 120px); line-height: 1; color: var(--tno-neon); text-shadow: 0 0 18px var(--tno-neon-dim); letter-spacing: 2px; font-weight: normal; }
+.site-subtitle { margin: 14px 0 0; font-size: clamp(16px, 2vw, 22px); }
+.site-lead { margin: 10px 0 0; color: var(--site-dim); font-size: 0.95rem; line-height: 1.6; max-width: 34em; }
+.site-stage { margin-top: 12px; color: var(--tno-neon); font-size: 0.8rem; letter-spacing: 2px; }
+html[data-theme-family="modern"] .site-title { color: var(--m-text); font-weight: 600; letter-spacing: -2px; }
+html[data-theme-family="modern"] .site-subtitle { color: var(--m-text-2); }
+html[data-theme-family="modern"] .site-stage { color: var(--m-text); font-weight: 600; font-size: 13px; letter-spacing: 1px; }
+
+/* 카드 */
+.site-card { background: var(--tno-panel); border: 1px solid var(--tno-border); border-radius: var(--site-radius); padding: 16px; }
+html[data-theme-family="modern"] .site-card { background: var(--m-surface); border-color: var(--m-border); box-shadow: var(--m-shadow); }
+.site-card-head { font-size: 0.75rem; color: var(--site-dim); letter-spacing: 2px; margin-bottom: 10px; }
+
+/* Steam */
+.site-steam { border-color: var(--tno-gold); }
+html[data-theme-family="modern"] .site-steam { border-color: var(--m-border); }
+.site-steam-title { margin: 0 0 8px; font-size: 1.4rem; font-weight: normal; color: var(--tno-gold); }
+html[data-theme-family="modern"] .site-steam-title { color: var(--m-text); font-weight: 700; }
+.site-steam-text { margin: 0 0 14px; line-height: 1.65; font-size: 0.92rem; }
+.site-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 12px 14px; text-decoration: none; font-size: 1.05rem; border: 1px solid currentColor; cursor: pointer; font-family: inherit; }
+.site-btn-primary { color: var(--tno-gold); background: color-mix(in srgb, var(--tno-gold) 10%, transparent); }
+.site-btn-primary:hover { background: color-mix(in srgb, var(--tno-gold) 18%, transparent); }
+html[data-theme-family="modern"] .site-btn { border-radius: 14px; font-weight: 600; }
+html[data-theme-family="modern"] .site-btn-primary { color: var(--m-on-accent); background: var(--m-accent); border-color: var(--m-accent); }
+html[data-theme-family="modern"] .site-btn-primary:hover { filter: brightness(1.12); }
+.site-btn[aria-disabled="true"] { opacity: .55; cursor: default; pointer-events: none; }
+
+/* 트레일러 */
+.site-trailer { position: relative; aspect-ratio: 16 / 9; background: #000; overflow: hidden; border-radius: calc(var(--site-radius) * .6); }
+.site-trailer img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: .85; }
+.site-trailer iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.site-trailer-play { position: absolute; inset: 0; margin: auto; width: 76px; height: 76px; border-radius: 50%; border: 2px solid #fff; background: rgba(0, 0, 0, .55); color: #fff; cursor: pointer; display: grid; place-items: center; padding-left: 4px; }
+.site-trailer-play:hover { background: #ff0033; border-color: #ff0033; }
+html[data-theme-family="modern"] .site-trailer-play { border-radius: 50%; }
+.site-trailer-links { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; font-size: 0.85rem; color: var(--site-dim); }
+.site-trailer-links a { color: var(--tno-neon); text-decoration: none; }
+.site-trailer-links a:hover { text-decoration: underline; }
+html[data-theme-family="modern"] .site-trailer-links a { color: var(--m-text); }
+
+/* 바로 가기 */
+.site-links { display: flex; flex-direction: column; gap: 4px; padding: 10px; }
+.site-link { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border: 1px solid transparent; text-decoration: none; min-width: 0; }
+.site-link:hover { border-color: var(--tno-neon); color: var(--tno-neon); background: color-mix(in srgb, var(--tno-neon) 8%, transparent); }
+html[data-theme-family="modern"] .site-link { border-radius: 14px; }
+html[data-theme-family="modern"] .site-link { color: var(--m-text); }
+html[data-theme-family="modern"] .site-link:hover { border-color: transparent; color: var(--m-text); background: var(--m-surface-2); }
+.site-link-icon { width: 36px; height: 36px; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; border: 1px solid currentColor; }
+html[data-theme-family="modern"] .site-link-icon { border: none; border-radius: 11px; background: var(--m-surface-2); }
+.site-yt { color: #ff0033; border-color: transparent; }
+.site-link-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.site-link-text b { font-weight: normal; font-size: 1.05rem; }
+html[data-theme-family="modern"] .site-link-text b { font-weight: 600; }
+.site-link-text small { color: var(--site-dim); font-size: 0.78rem; }
+.site-link-chev { opacity: .6; font-size: 1.2rem; }
+.site-links-sub { margin: 10px 12px 2px; font-size: 0.75rem; color: var(--site-dim); letter-spacing: 1px; }
+.site-link-row { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+
+/* 아래 */
+.site-footer { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; color: var(--site-dim); font-size: 0.8rem; padding-top: 8px; }
+.site-theme { display: flex; gap: 4px; }
+.site-theme button { font: inherit; font-size: 0.8rem; color: var(--site-dim); background: transparent; border: 1px solid var(--tno-border); padding: 5px 10px; cursor: pointer; }
+.site-theme button[aria-pressed="true"] { color: var(--tno-neon); border-color: var(--tno-neon); }
+html[data-theme-family="modern"] .site-theme button { border-radius: 999px; border-color: var(--m-border); }
+html[data-theme-family="modern"] .site-theme button[aria-pressed="true"] { color: var(--m-text); background: var(--m-surface-2); }
+
+/* 반원 배경(js/hemi-bg.js) — 모던 테마의 시각화 캔버스 규칙(배경 · 테두리)이 걸리지 않게 */
+html[data-theme-family="modern"] #hemiBg { background: transparent !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; }
+
+/* 좁은 화면: 한 줄로 */
+@media (max-width: 820px) {
+    .site { grid-template-columns: minmax(0, 1fr); grid-template-areas: "brand" "steam" "trailer" "links" "footer"; gap: 20px; }
+}
