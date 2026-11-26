@@ -19,7 +19,12 @@ body {
     background: var(--tno-bg);
     color: var(--tno-text);
     font-family: 'NeoDunggeunmo', 'VT323', monospace;
+    /* 한국어는 어절(띄어쓰기) 단위로 줄을 바꾼다 — 기본값은 글자마다 끊어 "의 / 회"처럼 단어가 갈렸다.
+       띄어쓰기 없이 긴 글자(주소 등)만 넘칠 때 아무 데서나 끊는다 */
+    word-break: keep-all;
+    overflow-wrap: anywhere;
 }
+.site-subtitle, .site-lead, .site-steam-text { text-wrap: pretty; } /* 마지막 줄에 한 단어만 남지 않게 (지원하는 브라우저만) */
 /* 네온: CRT 스캔라인 (라이트/다크는 modern.css가 끈다) */
 body::after {
     content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 999;
